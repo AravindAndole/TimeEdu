@@ -1,0 +1,712 @@
+/* TimeEdu Professional CSS Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background: #000000;
+    color: #DEC489;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.app-container {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Page Management */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Landing Page Styles */
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.site-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(222, 196, 137, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(222, 196, 137, 0.5); }
+    to { text-shadow: 0 0 30px rgba(222, 196, 137, 0.8); }
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(222, 196, 137, 0.3);
+    transition: all 0.3s ease;
+}
+
+.auth-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(222, 196, 137, 0.5);
+}
+
+/* Glass Morphism Buttons */
+.glass-btn, .glass-nav-btn {
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #DEC489;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.glass-btn:hover, .glass-nav-btn:hover {
+    background: rgba(222, 196, 137, 0.15);
+    box-shadow: 0 0 25px rgba(222, 196, 137, 0.4);
+    transform: translateY(-2px);
+}
+
+.glass-btn:active, .glass-nav-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(222, 196, 137, 0.3);
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 20px;
+    background: rgba(222, 196, 137, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(222, 196, 137, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-top: 10vh;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.form-container input, .form-container select, .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 10px;
+    color: #DEC489;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+}
+
+.form-container input::placeholder, .form-container textarea::placeholder {
+    color: rgba(222, 196, 137, 0.7);
+}
+
+.form-container input:focus, .form-container select:focus, .form-container textarea:focus {
+    outline: none;
+    border-color: #DEC489;
+    box-shadow: 0 0 15px rgba(222, 196, 137, 0.3);
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+.demo-accounts {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(222, 196, 137, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(222, 196, 137, 0.2);
+}
+
+.demo-accounts h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.demo-accounts p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.welcome-text {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(222, 196, 137, 0.5);
+}
+
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.glass-nav-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+.help-btn {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #DEC489;
+}
+
+.help-btn:hover {
+    background: rgba(255, 0, 0, 0.15);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+}
+
+/* Content Sections */
+.content-section {
+    display: none;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(222, 196, 137, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(222, 196, 137, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h2 {
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 25px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(222, 196, 137, 0.2);
+}
+
+.stat-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.stat-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* QR Scanner Styles */
+.qr-scanner-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.qr-scanner {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border: 2px solid #DEC489;
+    border-radius: 15px;
+    display: none;
+}
+
+#scanResult {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    display: none;
+}
+
+/* Schedule and Lists */
+.schedule-list, .classes-list, .homework-list, .students-list, .faculty-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-item, .class-card, .homework-item, .student-card, .faculty-card {
+    padding: 20px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover, .class-card:hover, .homework-item:hover, .student-card:hover, .faculty-card:hover {
+    background: rgba(222, 196, 137, 0.15);
+    transform: translateX(5px);
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.subject {
+    font-size: 1.1rem;
+}
+
+.class-card h3, .student-card h3, .faculty-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.class-card p, .student-card p, .faculty-card p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+/* Homework Styles */
+.homework-item.pending {
+    border-left: 4px solid #ff6b6b;
+}
+
+.homework-item .status {
+    float: right;
+    padding: 5px 10px;
+    background: rgba(255, 107, 107, 0.2);
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Gate Pass Form */
+.gate-pass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.gate-pass-form input {
+    padding: 15px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 10px;
+    color: #DEC489;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* Review Form */
+.review-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.review-form select, .review-form textarea {
+    width: 100%;
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 10px;
+    color: #DEC489;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.rating {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.star:hover {
+    transform: scale(1.2);
+}
+
+/* Development Resources */
+.development-resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.resource-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.resource-section ul {
+    list-style: none;
+}
+
+.resource-section li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(222, 196, 137, 0.2);
+}
+
+/* QR Generation */
+.qr-generation {
+    text-align: center;
+}
+
+#qrCodeContainer {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.manual-entry {
+    margin: 30px 0;
+}
+
+.manual-entry input {
+    padding: 15px;
+    margin: 0 10px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 10px;
+    color: #DEC489;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.attendance-list {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(222, 196, 137, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(222, 196, 137, 0.2);
+}
+
+.attendance-list ul {
+    list-style: none;
+    text-align: left;
+}
+
+.attendance-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(222, 196, 137, 0.2);
+}
+
+/* Fees Styles */
+.fees-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.fee-card {
+    padding: 25px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+}
+
+.fee-card.pending {
+    border-color: rgba(255, 107, 107, 0.5);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.fee-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.fee-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Child Info */
+.child-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+.child-info p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.attendance-stats {
+    text-align: center;
+    padding: 20px;
+    background: rgba(222, 196, 137, 0.1);
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.attendance-stats p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Institution Stats */
+.institution-stats {
+    text-align: center;
+    padding: 30px;
+    background: rgba(222, 196, 137, 0.1);
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+.institution-stats p {
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+
+/* Reports */
+.reports-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.reports-section .glass-btn {
+    width: 250px;
+}
+
+/* Faculty Cards */
+.faculty-card.absent {
+    border-color: rgba(255, 107, 107, 0.5);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: rgba(222, 196, 137, 0.1);
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid rgba(222, 196, 137, 0.3);
+    border-radius: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #DEC489;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close:hover {
+    opacity: 0.7;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .glass-nav-btn {
+        width: 200px;
+    }
+    
+    .button-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .auth-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .development-resources {
+        grid-template-columns: 1fr;
+    }
+    
+    .fees-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        margin: 5vh auto;
+        padding: 30px 20px;
+    }
+    
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    .content-section {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 2rem;
+    }
+    
+    .glass-btn, .glass-nav-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .auth-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Smooth Animations */
+* {
+    transition: all 0.3s ease;
+}
+
+.page {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
