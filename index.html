@@ -3,549 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimeEdu - Educational Management System</title>
+    <title>TimeEdu - Smart Education Management System</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-scanner/qr-scanner.min.js"></script>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Landing Page -->
-        <div id="landingPage" class="page active">
-            <div class="landing-container">
-                <h1 class="site-title">TimeEdu</h1>
-                <div class="auth-buttons">
-                    <div class="button-row">
-                        <img src="login-icon.jpg" alt="Login" class="auth-icon">
-                        <button id="loginBtn" class="glass-btn" onclick="goToLogin()">Login</button>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <!-- Initial Welcome Screen -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="welcome-content">
+                <h1 class="brand-title">TimeEdu</h1>
+                <p class="brand-subtitle">Professional Education Management Platform</p>
+                
+                <div class="glass-buttons-container">
+                    <div class="login-section">
+                        <div class="custom-logo user-profile-logo">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <button id="showLoginBtn" class="glass-btn glass-btn-login">
+                            <span>Login</span>
+                            <div class="glass-shine"></div>
+                        </button>
                     </div>
-                    <div class="button-row">
-                        <img src="student-icon.jpg" alt="Register" class="auth-icon">
-                        <button id="registerBtn" class="glass-btn" onclick="goToRegister()">Register</button>
+                    <div class="register-section">
+                        <div class="custom-logo circular-user-logo">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <button id="showRegisterBtn" class="glass-btn glass-btn-register">
+                            <span>Register</span>
+                            <div class="glass-shine"></div>
+                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Login Form -->
-        <div id="loginForm" class="page">
-            <div class="form-container">
-                <h2>Login to TimeEdu</h2>
-                <form id="loginFormElement" onsubmit="handleLogin(event)">
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <button type="submit" class="glass-btn">Login</button>
-                </form>
-                <p class="back-link" onclick="showLanding()">← Back to Home</p>
-                <div class="demo-accounts">
-                    <h3>Demo Accounts:</h3>
-                    <p>Student: student@demo.com / student123</p>
-                    <p>Lecturer: lecturer@demo.com / lecturer123</p>
-                    <p>Parent: parent@demo.com / parent123</p>
-                    <p>Principal: principal@demo.com / principal123</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Register Form -->
-        <div id="registerForm" class="page">
-            <div class="form-container">
-                <h2>Register for TimeEdu</h2>
-                <form id="registerFormElement" onsubmit="handleRegister(event)">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <select required>
-                        <option value="">Select Role</option>
-                        <option value="student">Student</option>
-                        <option value="lecturer">Lecturer</option>
-                        <option value="parent">Parent</option>
-                    </select>
-                    <button type="submit" class="glass-btn">Register</button>
-                </form>
-                <p class="back-link" onclick="showLanding()">← Back to Home</p>
-            </div>
-        </div>
-
-        <!-- Student Dashboard -->
-        <div id="studentDashboard" class="page">
-            <div class="dashboard-container">
-                <h1 class="welcome-text">Welcome, Arjun Kumar</h1>
-                <div class="nav-buttons">
-                    <button class="glass-nav-btn" onclick="showSection('studentDashboardContent')">Dashboard</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentAttendance')">Attendance</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentSchedule')">Schedule</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentHomework')">Homework</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentGatePass')">Gate Pass</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentReview')">Class Review</button>
-                    <button class="glass-nav-btn" onclick="showSection('studentDevelopment')">Personal Development</button>
-                    <button class="help-btn" onclick="showHelp()">Help</button>
                 </div>
                 
-                <div id="studentDashboardContent" class="content-section active">
-                    <h2>Dashboard Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>Attendance</h3>
-                            <p>85.7%</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Classes Today</h3>
-                            <p>5 Classes</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Homework Due</h3>
-                            <p>2 Pending</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Current Period</h3>
-                            <p>Mathematics - Room 101</p>
-                        </div>
+                <div class="demo-info">
+                    <p>Demo Accounts Available:</p>
+                    <div class="demo-accounts-grid">
+                        <span>student@demo.com</span>
+                        <span>lecturer@demo.com</span>
+                        <span>principal@demo.com</span>
+                        <span>parent@demo.com</span>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div id="studentAttendance" class="content-section">
-                    <h2>Attendance</h2>
-                    <div class="qr-scanner-container">
-                        <button class="glass-btn" onclick="startQRScanner()">Scan QR Code</button>
-                        <div id="qrScanner" class="qr-scanner"></div>
-                        <div id="scanResult"></div>
+        <!-- Auth Forms Screen (Hidden Initially) -->
+        <div id="authScreen" class="auth-screen" style="display: none;">
+            <button id="backToWelcome" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </button>
+            
+            <div class="auth-container-glass">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form glass-form active">
+                    <h2>Login to TimeEdu</h2>
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" required>
                     </div>
-                    <div class="attendance-stats">
-                        <p><strong>Overall Attendance:</strong> 85.7%</p>
-                        <p><strong>Present Days:</strong> 26</p>
-                        <p><strong>Absent Days:</strong> 4</p>
-                        <p><strong>Total Classes:</strong> 30</p>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
                     </div>
-                </div>
-
-                <div id="studentSchedule" class="content-section">
-                    <h2>Today's Schedule</h2>
-                    <div class="schedule-list">
-                        <div class="schedule-item">
-                            <span class="time">9:00 AM - 10:10 AM</span>
-                            <span class="subject">Mathematics - Room 101</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">10:20 AM - 11:30 AM</span>
-                            <span class="subject">Computer Science - Room 302</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">11:40 AM - 12:50 PM</span>
-                            <span class="subject">Physics - Room 105</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">1:30 PM - 2:40 PM</span>
-                            <span class="subject">Personal Development - Room 201</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">2:50 PM - 4:00 PM</span>
-                            <span class="subject">English - Room 108</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="studentHomework" class="content-section">
-                    <h2>Homework</h2>
-                    <div class="homework-list">
-                        <div class="homework-item pending">
-                            <h3>Mathematics - Calculus Assignment</h3>
-                            <p>Due: October 16, 2025</p>
-                            <span class="status">Pending</span>
-                        </div>
-                        <div class="homework-item pending">
-                            <h3>Computer Science - Data Structures</h3>
-                            <p>Due: October 15, 2025</p>
-                            <span class="status">Pending</span>
-                        </div>
-                        <div class="homework-item">
-                            <h3>Physics - Wave Motion Problems</h3>
-                            <p>Due: October 18, 2025</p>
-                            <span class="status completed">Completed</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="studentGatePass" class="content-section">
-                    <h2>Gate Pass</h2>
-                    <form class="gate-pass-form" onsubmit="handleGatePassSubmission(event)">
-                        <input type="text" placeholder="Reason for exit" required>
-                        <input type="time" placeholder="Expected return time" required>
-                        <textarea placeholder="Additional details (optional)" rows="3"></textarea>
-                        <button type="submit" class="glass-btn">Submit Request</button>
-                    </form>
-                    <div class="gate-pass-status">
-                        <h3>Recent Requests:</h3>
-                        <div class="status-item approved">
-                            <p><strong>Medical Emergency</strong> - Approved</p>
-                            <small>Requested: Oct 14, 2025 at 2:30 PM</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="studentReview" class="content-section">
-                    <h2>Class Review</h2>
-                    <div class="review-form">
-                        <select id="subjectSelect">
-                            <option>Select Subject</option>
-                            <option>Mathematics</option>
-                            <option>Computer Science</option>
-                            <option>Physics</option>
-                            <option>English</option>
+                    <div class="form-group">
+                        <label for="loginUserType">I am a:</label>
+                        <select id="loginUserType" required>
+                            <option value="">Select User Type</option>
+                            <option value="student">Student</option>
+                            <option value="lecturer">Lecturer</option>
+                            <option value="floor_incharge">Floor Incharge</option>
+                            <option value="principal">Principal/HOD</option>
+                            <option value="parent">Parent</option>
+                            <option value="guardian">Guardian</option>
                         </select>
-                        <div class="rating">
-                            <span>Rating: </span>
-                            <span class="star" onclick="setRating(1)">⭐</span>
-                            <span class="star" onclick="setRating(2)">⭐</span>
-                            <span class="star" onclick="setRating(3)">⭐</span>
-                            <span class="star" onclick="setRating(4)">⭐</span>
-                            <span class="star" onclick="setRating(5)">⭐</span>
-                        </div>
-                        <textarea placeholder="Your feedback" rows="4"></textarea>
-                        <button class="glass-btn" onclick="submitReview()">Submit Review</button>
                     </div>
-                </div>
+                    <button type="submit" class="glass-btn glass-btn-submit">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login to Dashboard</span>
+                        <div class="glass-shine"></div>
+                    </button>
+                </form>
 
-                <div id="studentDevelopment" class="content-section">
-                    <h2>Personal Development</h2>
-                    <div class="development-resources">
-                        <div class="resource-section">
-                            <h3>📚 Recommended Books</h3>
-                            <ul>
-                                <li>Atomic Habits - James Clear</li>
-                                <li>Rich Dad Poor Dad - Robert Kiyosaki</li>
-                                <li>The 7 Habits - Stephen Covey</li>
-                                <li>Think and Grow Rich - Napoleon Hill</li>
-                                <li>The Power of Now - Eckhart Tolle</li>
-                            </ul>
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form glass-form">
+                    <h2>Register for TimeEdu</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regName">First Name</label>
+                            <input type="text" id="regName" required>
                         </div>
-                        <div class="resource-section">
-                            <h3>💡 Business Ideas</h3>
-                            <ul>
-                                <li>Online Tutoring Platform</li>
-                                <li>Campus Food Delivery Service</li>
-                                <li>Study Group App</li>
-                                <li>Note Sharing Service</li>
-                                <li>Academic Resource Marketplace</li>
-                                <li>Student Event Planning</li>
-                            </ul>
-                        </div>
-                        <div class="resource-section">
-                            <h3>🎯 Skill Development</h3>
-                            <ul>
-                                <li>Programming & Development</li>
-                                <li>Public Speaking</li>
-                                <li>Leadership Skills</li>
-                                <li>Time Management</li>
-                                <li>Digital Marketing</li>
-                                <li>Financial Literacy</li>
-                            </ul>
+                        <div class="form-group">
+                            <label for="regSurname">Surname</label>
+                            <input type="text" id="regSurname" required>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email Address</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regCollegeEmail">College/School Email</label>
+                        <input type="email" id="regCollegeEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regMobile">Mobile Number</label>
+                        <input type="tel" id="regMobile" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regPassword">Password</label>
+                            <input type="password" id="regPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regConfirmPassword">Confirm Password</label>
+                            <input type="password" id="regConfirmPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regUserType">I am a:</label>
+                        <select id="regUserType" required>
+                            <option value="">Select User Type</option>
+                            <option value="student">Student</option>
+                            <option value="lecturer">Lecturer</option>
+                            <option value="floor_incharge">Floor Incharge</option>
+                            <option value="principal">Principal/HOD</option>
+                            <option value="parent">Parent</option>
+                            <option value="guardian">Guardian</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="glass-btn glass-btn-submit">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Create Account</span>
+                        <div class="glass-shine"></div>
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
 
-        <!-- Lecturer Dashboard -->
-        <div id="lecturerDashboard" class="page">
-            <div class="dashboard-container">
-                <h1 class="welcome-text">Welcome, Dr. Rajesh Patel</h1>
-                <div class="nav-buttons">
-                    <button class="glass-nav-btn" onclick="showSection('lecturerDashboardContent')">Dashboard</button>
-                    <button class="glass-nav-btn" onclick="showSection('lecturerClasses')">My Classes</button>
-                    <button class="glass-nav-btn" onclick="showSection('lecturerAttendance')">Attendance Management</button>
-                    <button class="glass-nav-btn" onclick="showSection('lecturerStudents')">Students</button>
-                    <button class="help-btn" onclick="showHelp()">Help</button>
+    <!-- Main Dashboard (Hidden initially) -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <!-- Welcome Header -->
+        <header class="dashboard-header">
+            <div class="user-info">
+                <div class="logo" style="display: flex; align-items: center; gap: var(--space-8);">
+                    <i class="fas fa-graduation-cap" style="color: #DEC489; font-size: var(--font-size-2xl);"></i>
+                    <span style="color: #DEC489; font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold);">TimeEdu</span>
                 </div>
-                
-                <div id="lecturerDashboardContent" class="content-section active">
-                    <h2>Dashboard Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>Current Class</h3>
-                            <p>Mathematics - Room 206</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Next Class</h3>
-                            <p>Mathematics - Room 403</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Total Classes Today</h3>
-                            <p>5 Classes</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Students Present</h3>
-                            <p>28/32</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lecturerClasses" class="content-section">
-                    <h2>My Classes</h2>
-                    <div class="classes-list">
-                        <div class="class-card">
-                            <h3>Mathematics - Room 101</h3>
-                            <p>9:00 AM - 10:10 AM | CSE Section A | 32 students</p>
-                            <button class="glass-btn" onclick="generateQR('CS101_Room101_0900')">Generate QR</button>
-                        </div>
-                        <div class="class-card">
-                            <h3>Mathematics - Room 206</h3>
-                            <p>10:20 AM - 11:30 AM | CSE Section B | 28 students</p>
-                            <button class="glass-btn" onclick="generateQR('MATH101_Room206_1020')">Generate QR</button>
-                        </div>
-                        <div class="class-card">
-                            <h3>Mathematics - Room 403</h3>
-                            <p>11:40 AM - 12:50 PM | ECE Section A | 30 students</p>
-                            <button class="glass-btn" onclick="generateQR('MATH101_Room403_1140')">Generate QR</button>
-                        </div>
-                        <div class="class-card">
-                            <h3>Computer Science - Room 302</h3>
-                            <p>1:30 PM - 2:40 PM | CSE Section A | 32 students</p>
-                            <button class="glass-btn" onclick="generateQR('CS101_Room302_1330')">Generate QR</button>
-                        </div>
-                        <div class="class-card">
-                            <h3>Data Structures - Room 205</h3>
-                            <p>2:50 PM - 4:00 PM | CSE Section C | 25 students</p>
-                            <button class="glass-btn" onclick="generateQR('DS101_Room205_1450')">Generate QR</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lecturerAttendance" class="content-section">
-                    <h2>Attendance Management</h2>
-                    <div class="qr-generation">
-                        <div id="qrCodeContainer"></div>
-                        <div class="manual-entry">
-                            <h3>Manual Attendance Entry</h3>
-                            <input type="text" id="studentId" placeholder="Enter Student ID (e.g., 21CSE001)">
-                            <button class="glass-btn" onclick="markManualAttendance()">Mark Present</button>
-                        </div>
-                        <div id="attendanceList" class="attendance-list">
-                            <h3>Present Students Today</h3>
-                            <ul id="presentStudents">
-                                <li>Arjun Kumar (21CSE001) - QR Scan (9:15 AM)</li>
-                                <li>Priya Sharma (21CSE002) - Manual Entry (9:20 AM)</li>
-                                <li>Rohit Singh (21CSE003) - QR Scan (9:18 AM)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lecturerStudents" class="content-section">
-                    <h2>Students Management</h2>
-                    <div class="students-list">
-                        <div class="student-card">
-                            <h3>Arjun Kumar (21CSE001)</h3>
-                            <p>CSE Section A | Attendance: 85.7% | Grade: A-</p>
-                        </div>
-                        <div class="student-card">
-                            <h3>Priya Sharma (21CSE002)</h3>
-                            <p>CSE Section A | Attendance: 92.3% | Grade: A+</p>
-                        </div>
-                        <div class="student-card">
-                            <h3>Rohit Singh (21CSE003)</h3>
-                            <p>CSE Section A | Attendance: 78.4% | Grade: B+</p>
-                        </div>
-                        <div class="student-card">
-                            <h3>Anjali Patel (21CSE004)</h3>
-                            <p>CSE Section A | Attendance: 88.9% | Grade: A</p>
-                        </div>
-                    </div>
-                </div>
+                <h1 id="dashboardTitle">Welcome</h1>
+                <p id="userWelcome">Welcome back!</p>
             </div>
+            <div class="header-actions">
+                <div class="notification-bell">
+                    <i class="fas fa-bell" style="color: #DEC489;"></i>
+                    <span class="notification-badge" id="notificationCount">3</span>
+                </div>
+                <div class="user-avatar" id="userAvatar" style="background: rgba(222, 196, 137, 0.2); color: #DEC489;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button id="logoutBtn" class="btn" style="margin-left: var(--space-16);">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Liquid Glass Navigation -->
+        <div class="liquid-nav-container">
+            <nav class="liquid-nav" id="liquidNav">
+                <!-- Liquid glass buttons will be populated based on user type -->
+            </nav>
         </div>
 
-        <!-- Parent Dashboard -->
-        <div id="parentDashboard" class="page">
-            <div class="dashboard-container">
-                <h1 class="welcome-text">Welcome, Mr. Rakesh Kumar</h1>
-                <div class="nav-buttons">
-                    <button class="glass-nav-btn" onclick="showSection('parentDashboardContent')">Dashboard</button>
-                    <button class="glass-nav-btn" onclick="showSection('parentChildInfo')">Child Overview</button>
-                    <button class="glass-nav-btn" onclick="showSection('parentFees')">Fees</button>
-                    <button class="glass-nav-btn" onclick="showSection('parentCommunications')">Communications</button>
-                    <button class="help-btn" onclick="showHelp()">Help</button>
-                </div>
-                
-                <div id="parentDashboardContent" class="content-section active">
-                    <h2>Dashboard Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>Child Name</h3>
-                            <p>Arjun Kumar</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Attendance</h3>
-                            <p>85.7%</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Fees Pending</h3>
-                            <p>₹7,500</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Fees Remaining</h3>
-                            <p>₹2,500</p>
-                        </div>
-                    </div>
-                </div>
+        <main class="main-content">
+            <!-- Content header for section titles -->
+            <div class="content-header" style="padding: var(--space-16) var(--space-24); border-bottom: 1px solid rgba(222, 196, 137, 0.1);">
+                <h2 id="sectionTitle" style="color: #DEC489; font-size: var(--font-size-2xl); margin: 0;">Dashboard</h2>
+                <button class="btn" id="helpBtn" style="margin-left: auto;">
+                    <i class="fas fa-question-circle"></i>
+                    Help
+                </button>
+            </div>
 
-                <div id="parentChildInfo" class="content-section">
-                    <h2>Child Information</h2>
-                    <div class="child-info">
-                        <p><strong>Name:</strong> Arjun Kumar</p>
-                        <p><strong>Roll Number:</strong> 21CSE001</p>
-                        <p><strong>Department:</strong> Computer Science Engineering</p>
-                        <p><strong>Section:</strong> A</p>
-                        <p><strong>Semester:</strong> 3rd</p>
-                        <p><strong>Overall Attendance:</strong> 85.7%</p>
-                        <p><strong>Current GPA:</strong> 8.7/10</p>
-                        <p><strong>Class Rank:</strong> 8/32</p>
-                    </div>
-                </div>
+            <div id="dashboardContent" class="dashboard-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </main>
+    </div>
 
-                <div id="parentFees" class="content-section">
-                    <h2>Fees Information</h2>
-                    <div class="fees-info">
-                        <div class="fee-card">
-                            <h3>Total Semester Fee</h3>
-                            <p>₹10,000</p>
-                        </div>
-                        <div class="fee-card pending">
-                            <h3>Fees Pending</h3>
-                            <p>₹7,500</p>
-                        </div>
-                        <div class="fee-card">
-                            <h3>Fees Remaining</h3>
-                            <p>₹2,500</p>
-                        </div>
-                        <div class="fee-card paid">
-                            <h3>Already Paid</h3>
-                            <p>₹0</p>
-                        </div>
-                    </div>
-                    <div class="payment-section">
-                        <button class="glass-btn" onclick="payFees()">Pay Fees Online</button>
-                        <p><small>Secure payment gateway powered by Razorpay</small></p>
-                    </div>
-                </div>
-
-                <div id="parentCommunications" class="content-section">
-                    <h2>Communications</h2>
-                    <div class="communications-list">
-                        <div class="message-card">
-                            <h3>Mathematics Assignment Reminder</h3>
-                            <p>Dear Parent, please remind Arjun to submit his Calculus assignment by tomorrow.</p>
-                            <small>From: Dr. Rajesh Patel | Oct 14, 2025</small>
-                        </div>
-                        <div class="message-card">
-                            <h3>Parent-Teacher Meeting</h3>
-                            <p>Scheduled for October 20, 2025 at 3:00 PM. Please confirm your attendance.</p>
-                            <small>From: Class Teacher | Oct 13, 2025</small>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal for various forms and confirmations -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody">
+                <!-- Modal content will be inserted here -->
             </div>
         </div>
+    </div>
 
-        <!-- Principal Dashboard -->
-        <div id="principalDashboard" class="page">
-            <div class="dashboard-container">
-                <h1 class="welcome-text">Welcome, Dr. Anita Verma</h1>
-                <div class="nav-buttons">
-                    <button class="glass-nav-btn" onclick="showSection('principalDashboardContent')">Dashboard</button>
-                    <button class="glass-nav-btn" onclick="showSection('principalInstitution')">Institution Overview</button>
-                    <button class="glass-nav-btn" onclick="showSection('principalFaculty')">Faculty Management</button>
-                    <button class="glass-nav-btn" onclick="showSection('principalReports')">Reports</button>
-                    <button class="help-btn" onclick="showHelp()">Help</button>
-                </div>
-                
-                <div id="principalDashboardContent" class="content-section active">
-                    <h2>Institution Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>Total Students</h3>
-                            <p>450</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Active Classes</h3>
-                            <p>24</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Faculty Present</h3>
-                            <p>18/20</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Average Attendance</h3>
-                            <p>87.5%</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="principalInstitution" class="content-section">
-                    <h2>Institution Status</h2>
-                    <div class="institution-stats">
-                        <p><strong>System Status:</strong> All systems operational ✅</p>
-                        <p><strong>Classes in Session:</strong> 24 active classes</p>
-                        <p><strong>Faculty Attendance:</strong> 90% (18/20 present)</p>
-                        <p><strong>Student Attendance:</strong> 87.5% average</p>
-                        <p><strong>Campus Status:</strong> Normal operations</p>
-                        <p><strong>Emergency Contacts:</strong> All systems ready</p>
-                    </div>
-                </div>
-
-                <div id="principalFaculty" class="content-section">
-                    <h2>Faculty Management</h2>
-                    <div class="faculty-list">
-                        <div class="faculty-card">
-                            <h3>Dr. Rajesh Patel</h3>
-                            <p>Mathematics & Computer Science | Present ✅</p>
-                        </div>
-                        <div class="faculty-card">
-                            <h3>Dr. Priya Kumar</h3>
-                            <p>Physics | Present ✅</p>
-                        </div>
-                        <div class="faculty-card absent">
-                            <h3>Ms. Sarah Johnson</h3>
-                            <p>English | Absent ❌</p>
-                        </div>
-                        <div class="faculty-card">
-                            <h3>Prof. Amit Sharma</h3>
-                            <p>Chemistry | Present ✅</p>
-                        </div>
-                        <div class="faculty-card absent">
-                            <h3>Dr. Kavita Singh</h3>
-                            <p>Biology | Absent ❌</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="principalReports" class="content-section">
-                    <h2>Reports & Analytics</h2>
-                    <div class="reports-section">
-                        <button class="glass-btn" onclick="generateReport('Attendance')">Generate Attendance Report</button>
-                        <button class="glass-btn" onclick="generateReport('Academic')">Generate Academic Report</button>
-                        <button class="glass-btn" onclick="generateReport('Faculty')">Generate Faculty Report</button>
-                        <button class="glass-btn" onclick="generateReport('Financial')">Generate Financial Report</button>
-                    </div>
-                </div>
-            </div>
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span id="toastMessage"></span>
         </div>
-
-        <!-- Help Modal -->
-        <div id="helpModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeHelp()">&times;</span>
-                <h2>Help & Support</h2>
-                <p><strong>Contact administrator office if any issue is raised.</strong></p>
-                <p><strong>Email:</strong> admin@timeedu.com</p>
-                <p><strong>Phone:</strong> +91-9876543210</p>
-                <p><strong>Office Hours:</strong> 9:00 AM - 6:00 PM</p>
-                <p><strong>Emergency Contact:</strong> +91-9876543211</p>
-            </div>
-        </div>
-
-        <!-- Notification Container -->
-        <div id="notificationContainer"></div>
     </div>
 
     <script src="script.js"></script>
