@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeEdu - Educational Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Landing Page -->
+        <div id="landingPage" class="page active">
+            <div class="landing-container">
+                <h1 class="site-title">TimeEdu</h1>
+                <div class="auth-buttons">
+                    <div class="button-row">
+                        <img src="login-icon.jpg" alt="Login" class="auth-icon">
+                        <button id="loginBtn" class="glass-btn">Login</button>
+                    </div>
+                    <div class="button-row">
+                        <img src="student-icon.jpg" alt="Register" class="auth-icon">
+                        <button id="registerBtn" class="glass-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="page">
+            <div class="form-container">
+                <h2>Login to TimeEdu</h2>
+                <form id="loginFormElement">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit" class="glass-btn">Login</button>
+                </form>
+                <p class="back-link" onclick="showLanding()">← Back to Home</p>
+                <div class="demo-accounts">
+                    <h3>Demo Accounts:</h3>
+                    <p>Student: student@demo.com / student123</p>
+                    <p>Lecturer: lecturer@demo.com / lecturer123</p>
+                    <p>Parent: parent@demo.com / parent123</p>
+                    <p>Principal: principal@demo.com / principal123</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerForm" class="page">
+            <div class="form-container">
+                <h2>Register for TimeEdu</h2>
+                <form id="registerFormElement">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option value="student">Student</option>
+                        <option value="lecturer">Lecturer</option>
+                        <option value="parent">Parent</option>
+                    </select>
+                    <button type="submit" class="glass-btn">Register</button>
+                </form>
+                <p class="back-link" onclick="showLanding()">← Back to Home</p>
+            </div>
+        </div>
+
+        <!-- Student Dashboard -->
+        <div id="studentDashboard" class="page">
+            <div class="dashboard-container">
+                <h1 class="welcome-text">Welcome, Arjun Kumar</h1>
+                <div class="nav-buttons">
+                    <button class="glass-nav-btn" onclick="showSection('studentDashboardContent')">Dashboard</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentAttendance')">Attendance</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentSchedule')">Schedule</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentHomework')">Homework</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentGatePass')">Gate Pass</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentReview')">Class Review</button>
+                    <button class="glass-nav-btn" onclick="showSection('studentDevelopment')">Personal Development</button>
+                    <button class="help-btn" onclick="showHelp()">Help</button>
+                </div>
+                
+                <div id="studentDashboardContent" class="content-section active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Attendance</h3>
+                            <p>85.7%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Classes Today</h3>
+                            <p>5 Classes</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Homework Due</h3>
+                            <p>2 Pending</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Current Period</h3>
+                            <p>Mathematics - Room 101</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="studentAttendance" class="content-section">
+                    <h2>Attendance</h2>
+                    <div class="qr-scanner-container">
+                        <button class="glass-btn" onclick="startQRScanner()">Scan QR Code</button>
+                        <div id="qrScanner" class="qr-scanner"></div>
+                        <div id="scanResult"></div>
+                    </div>
+                    <div class="attendance-stats">
+                        <p>Overall Attendance: 85.7%</p>
+                        <p>Present Days: 26</p>
+                        <p>Absent Days: 4</p>
+                    </div>
+                </div>
+
+                <div id="studentSchedule" class="content-section">
+                    <h2>Today's Schedule</h2>
+                    <div class="schedule-list">
+                        <div class="schedule-item">
+                            <span class="time">9:00 AM - 10:10 AM</span>
+                            <span class="subject">Mathematics - Room 101</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">10:20 AM - 11:30 AM</span>
+                            <span class="subject">Computer Science - Room 302</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">11:40 AM - 12:50 PM</span>
+                            <span class="subject">Physics - Room 105</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">1:30 PM - 2:40 PM</span>
+                            <span class="subject">Personal Development - Room 201</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">2:50 PM - 4:00 PM</span>
+                            <span class="subject">English - Room 108</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="studentHomework" class="content-section">
+                    <h2>Homework</h2>
+                    <div class="homework-list">
+                        <div class="homework-item pending">
+                            <h3>Mathematics - Calculus Assignment</h3>
+                            <p>Due: October 16, 2025</p>
+                            <span class="status">Pending</span>
+                        </div>
+                        <div class="homework-item pending">
+                            <h3>Computer Science - Data Structures</h3>
+                            <p>Due: October 15, 2025</p>
+                            <span class="status">Pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="studentGatePass" class="content-section">
+                    <h2>Gate Pass</h2>
+                    <form class="gate-pass-form">
+                        <input type="text" placeholder="Reason for exit" required>
+                        <input type="time" placeholder="Expected return time" required>
+                        <button type="submit" class="glass-btn">Submit Request</button>
+                    </form>
+                </div>
+
+                <div id="studentReview" class="content-section">
+                    <h2>Class Review</h2>
+                    <div class="review-form">
+                        <select>
+                            <option>Select Subject</option>
+                            <option>Mathematics</option>
+                            <option>Computer Science</option>
+                            <option>Physics</option>
+                        </select>
+                        <div class="rating">
+                            <span>Rating: </span>
+                            <span class="star" data-rating="1">⭐</span>
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="3">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="5">⭐</span>
+                        </div>
+                        <textarea placeholder="Your feedback"></textarea>
+                        <button class="glass-btn">Submit Review</button>
+                    </div>
+                </div>
+
+                <div id="studentDevelopment" class="content-section">
+                    <h2>Personal Development</h2>
+                    <div class="development-resources">
+                        <div class="resource-section">
+                            <h3>Recommended Books</h3>
+                            <ul>
+                                <li>Atomic Habits - James Clear</li>
+                                <li>Rich Dad Poor Dad - Robert Kiyosaki</li>
+                                <li>The 7 Habits - Stephen Covey</li>
+                            </ul>
+                        </div>
+                        <div class="resource-section">
+                            <h3>Business Ideas</h3>
+                            <ul>
+                                <li>Online Tutoring Platform</li>
+                                <li>Campus Food Delivery</li>
+                                <li>Study Group App</li>
+                                <li>Note Sharing Service</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lecturer Dashboard -->
+        <div id="lecturerDashboard" class="page">
+            <div class="dashboard-container">
+                <h1 class="welcome-text">Welcome, Dr. Rajesh Patel</h1>
+                <div class="nav-buttons">
+                    <button class="glass-nav-btn" onclick="showSection('lecturerDashboardContent')">Dashboard</button>
+                    <button class="glass-nav-btn" onclick="showSection('lecturerClasses')">My Classes</button>
+                    <button class="glass-nav-btn" onclick="showSection('lecturerAttendance')">Attendance Management</button>
+                    <button class="glass-nav-btn" onclick="showSection('lecturerStudents')">Students</button>
+                    <button class="help-btn" onclick="showHelp()">Help</button>
+                </div>
+                
+                <div id="lecturerDashboardContent" class="content-section active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Current Class</h3>
+                            <p>Mathematics - Room 206</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Next Class</h3>
+                            <p>Mathematics - Room 403</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Classes Today</h3>
+                            <p>5 Classes</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Students Present</h3>
+                            <p>28/32</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lecturerClasses" class="content-section">
+                    <h2>My Classes</h2>
+                    <div class="classes-list">
+                        <div class="class-card">
+                            <h3>Mathematics - Room 101</h3>
+                            <p>9:00 AM - 10:10 AM | CSE Section A | 32 students</p>
+                            <button class="glass-btn" onclick="generateQR('CS101_Room101_0900')">Generate QR</button>
+                        </div>
+                        <div class="class-card">
+                            <h3>Mathematics - Room 206</h3>
+                            <p>10:20 AM - 11:30 AM | CSE Section B | 28 students</p>
+                            <button class="glass-btn" onclick="generateQR('MATH101_Room206_1020')">Generate QR</button>
+                        </div>
+                        <div class="class-card">
+                            <h3>Mathematics - Room 403</h3>
+                            <p>11:40 AM - 12:50 PM | ECE Section A | 30 students</p>
+                            <button class="glass-btn" onclick="generateQR('MATH101_Room403_1140')">Generate QR</button>
+                        </div>
+                        <div class="class-card">
+                            <h3>Computer Science - Room 302</h3>
+                            <p>1:30 PM - 2:40 PM | CSE Section A | 32 students</p>
+                            <button class="glass-btn" onclick="generateQR('CS101_Room302_1330')">Generate QR</button>
+                        </div>
+                        <div class="class-card">
+                            <h3>Data Structures - Room 205</h3>
+                            <p>2:50 PM - 4:00 PM | CSE Section C | 25 students</p>
+                            <button class="glass-btn" onclick="generateQR('DS101_Room205_1450')">Generate QR</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lecturerAttendance" class="content-section">
+                    <h2>Attendance Management</h2>
+                    <div class="qr-generation">
+                        <div id="qrCodeContainer"></div>
+                        <div class="manual-entry">
+                            <h3>Manual Attendance Entry</h3>
+                            <input type="text" id="studentId" placeholder="Enter Student ID">
+                            <button class="glass-btn" onclick="markManualAttendance()">Mark Present</button>
+                        </div>
+                        <div id="attendanceList" class="attendance-list">
+                            <h3>Present Students</h3>
+                            <ul id="presentStudents"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lecturerStudents" class="content-section">
+                    <h2>Students Management</h2>
+                    <div class="students-list">
+                        <div class="student-card">
+                            <h3>Arjun Kumar (21CSE001)</h3>
+                            <p>CSE Section A | Attendance: 85.7%</p>
+                        </div>
+                        <div class="student-card">
+                            <h3>Priya Sharma (21CSE002)</h3>
+                            <p>CSE Section A | Attendance: 92.3%</p>
+                        </div>
+                        <div class="student-card">
+                            <h3>Rohit Singh (21CSE003)</h3>
+                            <p>CSE Section A | Attendance: 78.4%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parent Dashboard -->
+        <div id="parentDashboard" class="page">
+            <div class="dashboard-container">
+                <h1 class="welcome-text">Welcome, Mr. Rakesh Kumar</h1>
+                <div class="nav-buttons">
+                    <button class="glass-nav-btn" onclick="showSection('parentDashboardContent')">Dashboard</button>
+                    <button class="glass-nav-btn" onclick="showSection('parentChildInfo')">Child Overview</button>
+                    <button class="glass-nav-btn" onclick="showSection('parentFees')">Fees</button>
+                    <button class="help-btn" onclick="showHelp()">Help</button>
+                </div>
+                
+                <div id="parentDashboardContent" class="content-section active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Child Name</h3>
+                            <p>Arjun Kumar</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Attendance</h3>
+                            <p>85.7%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Fees Pending</h3>
+                            <p>₹7,500</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Fees Remaining</h3>
+                            <p>₹2,500</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="parentChildInfo" class="content-section">
+                    <h2>Child Information</h2>
+                    <div class="child-info">
+                        <p><strong>Name:</strong> Arjun Kumar</p>
+                        <p><strong>Roll Number:</strong> 21CSE001</p>
+                        <p><strong>Department:</strong> Computer Science Engineering</p>
+                        <p><strong>Section:</strong> A</p>
+                        <p><strong>Semester:</strong> 3rd</p>
+                        <p><strong>Overall Attendance:</strong> 85.7%</p>
+                    </div>
+                </div>
+
+                <div id="parentFees" class="content-section">
+                    <h2>Fees Information</h2>
+                    <div class="fees-info">
+                        <div class="fee-card">
+                            <h3>Total Semester Fee</h3>
+                            <p>₹10,000</p>
+                        </div>
+                        <div class="fee-card pending">
+                            <h3>Fees Pending</h3>
+                            <p>₹7,500</p>
+                        </div>
+                        <div class="fee-card">
+                            <h3>Fees Remaining</h3>
+                            <p>₹2,500</p>
+                        </div>
+                        <button class="glass-btn">Pay Fees Online</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Principal Dashboard -->
+        <div id="principalDashboard" class="page">
+            <div class="dashboard-container">
+                <h1 class="welcome-text">Welcome, Dr. Anita Verma</h1>
+                <div class="nav-buttons">
+                    <button class="glass-nav-btn" onclick="showSection('principalDashboardContent')">Dashboard</button>
+                    <button class="glass-nav-btn" onclick="showSection('principalInstitution')">Institution Overview</button>
+                    <button class="glass-nav-btn" onclick="showSection('principalFaculty')">Faculty Management</button>
+                    <button class="glass-nav-btn" onclick="showSection('principalReports')">Reports</button>
+                    <button class="help-btn" onclick="showHelp()">Help</button>
+                </div>
+                
+                <div id="principalDashboardContent" class="content-section active">
+                    <h2>Institution Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Students</h3>
+                            <p>450</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Active Classes</h3>
+                            <p>24</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Faculty Present</h3>
+                            <p>18/20</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Average Attendance</h3>
+                            <p>87.5%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="principalInstitution" class="content-section">
+                    <h2>Institution Status</h2>
+                    <div class="institution-stats">
+                        <p>All systems operational</p>
+                        <p>24 classes in session</p>
+                        <p>Faculty attendance: 90%</p>
+                        <p>Student attendance: 87.5%</p>
+                    </div>
+                </div>
+
+                <div id="principalFaculty" class="content-section">
+                    <h2>Faculty Management</h2>
+                    <div class="faculty-list">
+                        <div class="faculty-card">
+                            <h3>Dr. Rajesh Patel</h3>
+                            <p>Mathematics & Computer Science | Present</p>
+                        </div>
+                        <div class="faculty-card">
+                            <h3>Dr. Priya Kumar</h3>
+                            <p>Physics | Present</p>
+                        </div>
+                        <div class="faculty-card absent">
+                            <h3>Ms. Sarah Johnson</h3>
+                            <p>English | Absent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="principalReports" class="content-section">
+                    <h2>Reports & Analytics</h2>
+                    <div class="reports-section">
+                        <button class="glass-btn">Generate Attendance Report</button>
+                        <button class="glass-btn">Generate Academic Report</button>
+                        <button class="glass-btn">Generate Faculty Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div id="helpModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeHelp()">&times;</span>
+                <h2>Help & Support</h2>
+                <p>Contact administrator office if any issue is raised.</p>
+                <p>Email: admin@timeedu.com</p>
+                <p>Phone: +91-XXXXXXXXXX</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
